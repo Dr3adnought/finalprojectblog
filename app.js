@@ -1,3 +1,30 @@
+/* creating object of Date class */
+function currentTime() {
+    var date = newDate(); 
+    var hour = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSecond();
+    hour = updateTime(hour);
+    min = updateTime(min);
+    sec = updateTime(sec);
+    document.getElementById("clock").innerHTML = hour + " : " + min + " : " + sec; /* adding time to the div */
+    var t = setTimeout(function(){ currentTime() }, 1000); /* setting timer */
+    var midday = "AM";
+    midday = (hour >= 12) ? "PM" : "AM";
+    hour = (hour == 0) ? 12 : ((hour > 12) ? (hour -12): hour)
+}
+
+function updateTime(k) {
+    if (k <10) {
+        return "0" + k;
+    }
+    else {
+        return k;
+    }
+}
+
+currentTime(); /* calling currentTime() function to initiate the process */
+
 window.onload = function () {
 
     let title = document.querySelector("#title")
@@ -19,14 +46,4 @@ window.onload = function () {
     `
         cards.appendChild(div)
     })
-
-
-
-
-
-
-
-
-
-
 }
